@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { ImageGalleryList } from './ImageGallery.styled';
-import ImageGalleryItem from 'modules/ImageGalleryItem/ImageGalleryItem';
+import ImageGalleryItem from '../ImageGalleryItem/ImageGalleryItem';
 
 const ImageGallery = ({ items, showImg }) => {
   const elements = items.map(({ id, webformatURL, tags, largeImageURL }) => {

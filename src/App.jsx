@@ -1,4 +1,4 @@
-import ImgSearch from 'modules/ImgSearch';
+import ImgSearch from 'modules/components/ImgSearch';
 
 export const App = () => {
   return <ImgSearch />;

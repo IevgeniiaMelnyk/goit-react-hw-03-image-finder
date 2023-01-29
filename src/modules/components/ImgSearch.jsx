@@ -7,7 +7,7 @@ import Modal from 'shared/components/Modal/Modal';
 import ModalImg from 'shared/components/ModalImg/ModalImg';
 import Loader from 'shared/components/Loader/Loader';
 
-import { searchImg } from '../shared/services/img-app.js';
+import { searchImg } from 'shared/services/img-app';
 
 class ImgSearch extends Component {
   state = {
@@ -74,10 +74,12 @@ class ImgSearch extends Component {
     return (
       <>
         <Searchbar onSubmit={searchImg} />
-        <ImageGallery items={items} showImg={showImg} />
+        {Boolean(items.length) && (
+          <ImageGallery items={items} showImg={showImg} />
+        )}
         {error && <p>{error}</p>}
         {loading && <Loader />}
-        {Boolean(items.length) && (
+        {Boolean(items.length) && !loading && (
           <LoadMoreBtn type="button" onClick={loadMore} />
         )}
         {showModal && (
