@@ -11,7 +11,11 @@ const ImageGalleryItem = ({ src, tags, largeImageURL, showImg }) => {
         showImg({ largeImageURL, tags });
       }}
     >
-      <ImageGalleryItemImage src={src} alt={tags}></ImageGalleryItemImage>
+      <ImageGalleryItemImage
+        src={src}
+        alt={tags}
+        loading="lazy"
+      ></ImageGalleryItemImage>
     </ImageGalleryItemLi>
   );
 };

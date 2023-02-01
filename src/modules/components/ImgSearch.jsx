@@ -16,7 +16,6 @@ class ImgSearch extends Component {
     loading: false,
     error: null,
     page: 1,
-    showModal: false,
     modalImg: null,
   };
 
@@ -56,19 +55,17 @@ class ImgSearch extends Component {
         largeImageURL,
         tags,
       },
-      showModal: true,
     });
   };
 
   closeModal = () => {
     this.setState({
-      showModal: false,
       modalImg: null,
     });
   };
 
   render() {
-    const { items, error, loading, showModal, modalImg } = this.state;
+    const { items, error, loading, modalImg } = this.state;
     const { searchImg, loadMore, closeModal, showImg } = this;
 
     return (
@@ -82,7 +79,7 @@ class ImgSearch extends Component {
         {Boolean(items.length) && !loading && (
           <LoadMoreBtn type="button" onClick={loadMore} />
         )}
-        {showModal && (
+        {modalImg && (
           <Modal close={closeModal}>
             <ModalImg
               largeImageURL={modalImg.largeImageURL}

@@ -1,3 +1,5 @@
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { Component } from 'react';
 import PropTypes from 'prop-types';
 import { IoSearch } from 'react-icons/io5';
@@ -21,6 +23,10 @@ class Searchbar extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
+    if (this.state.search.trim() === '') {
+      toast.info('Enter a search term.');
+      return;
+    }
     const { onSubmit } = this.props;
     onSubmit({ ...this.state });
     this.reset();
@@ -39,14 +45,6 @@ class Searchbar extends Component {
     return (
       <SearchbarSection>
         <SearchForm onSubmit={handleSubmit}>
-          <SearchFormButton type="submit">
-            <IconContext.Provider
-              value={{ style: { width: '30px', height: '30px', fill: 'gray' } }}
-            >
-              <IoSearch />
-            </IconContext.Provider>
-          </SearchFormButton>
-
           <SearchFormInput
             value={search}
             onChange={handleChange}
@@ -56,6 +54,15 @@ class Searchbar extends Component {
             autoFocus
             placeholder="Search images and photos"
           />
+          <SearchFormButton type="submit">
+            <IconContext.Provider
+              value={{
+                style: { width: '30px', height: '30px', fill: '#3f51b5' },
+              }}
+            >
+              <IoSearch />
+            </IconContext.Provider>
+          </SearchFormButton>
         </SearchForm>
       </SearchbarSection>
     );
